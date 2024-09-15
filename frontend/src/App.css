@@ -1,0 +1,57 @@
+.App {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(./assets/img/background.jpg) no-repeat center;
+  background-size: cover;
+  filter: grayscale(100);
+  z-index: -1;
+}
+
+/* Add these styles to your global CSS file or in a CSS module */
+.scrollable-container {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  /* For Firefox */
+  scrollbar-color: grey transparent;
+  /* For Firefox */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  width: 4px;
+  /* Width of the scrollbar */
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+  background: transparent;
+  /* Background color of the track */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background: grey;
+  /* Color of the scrollbar thumb */
+  border-radius: 2px;
+  /* Rounded corners for the thumb */
+}
+
+
+.hidden-bottom {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
