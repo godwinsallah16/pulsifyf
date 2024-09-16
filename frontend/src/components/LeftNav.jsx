@@ -24,11 +24,11 @@ const LeftNav = () => {
       case '/':
         setActiveItem('home');
         break;
-      case '/artist':
-        setActiveItem('artist');
+      case '/artists':
+        setActiveItem('artists');
         break;
-      case '/album':
-        setActiveItem('album');
+      case '/albums':
+        setActiveItem('albums');
         break;
       case '/podcast':
         setActiveItem('podcast');
