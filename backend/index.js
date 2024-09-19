@@ -19,6 +19,13 @@ require("dotenv").config();
 
 // Use the CORS middleware
 app.use(cors());
+// Use route modules
+app.use("/api", artistsRoutes);
+app.use("/api", releasesRoutes);
+app.use("/api", podcastRoutes);
+app.use("/api", albumRoutes);
+app.use("/api", trendingSongsRouter);
+app.use("/api", discover);
 
 // Function to build frontend if needed
 const buildFrontendIfNeeded = () => {
@@ -55,14 +62,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"));
   });
 }
-
-// Use route modules
-app.use("/api", artistsRoutes);
-app.use("/api", releasesRoutes);
-app.use("/api", podcastRoutes);
-app.use("/api", albumRoutes);
-app.use("/api", trendingSongsRouter);
-app.use("/api", discover);
 
 // Start server
 app.listen(PORT, () => {
