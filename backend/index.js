@@ -29,7 +29,7 @@ app.use("/api", discover);
 
 // Function to build frontend if needed
 const buildFrontendIfNeeded = () => {
-  const buildFolderPath = path.join(__dirname, "frontend", "build");
+  const buildFolderPath = path.join(__dirname, "../frontend", "build");
 
   if (!fs.existsSync(buildFolderPath)) {
     console.log("No build folder found. Installing and building frontend...");
