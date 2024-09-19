@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const fetchArtists = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/trending-artists");
+        const response = await axios.get("https://pulsify.onrender.com/api/trending-artists");
         setArtists(response.data.global || []);
       } catch (error) {
         console.error("Error fetching artists: ", error);
@@ -23,7 +23,7 @@ const Home = () => {
 
     const fetchRecommendedAlbums = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/album");
+        const response = await axios.get("https://pulsify.onrender.com/api/album");
         setRecommendedAlbums(response.data || []);
       } catch (error) {
         console.error("Error fetching recommended albums: ", error);
@@ -34,7 +34,7 @@ const Home = () => {
     // Fetch trending songs from the new API
     const fetchTrendingSongs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/trending-songs");
+        const response = await axios.get("https://pulsify.onrender.com/api/trending-songs");
         setTrendingSongs(response.data || []); // Ensure response.data is set to an empty array if undefined
       } catch (error) {
         console.error("Error fetching trending songs: ", error);
