@@ -22,11 +22,9 @@ app.use(cors());
 
 // Function to build frontend if needed
 const buildFrontendIfNeeded = () => {
-  // Check if the build folder exists
   const buildFolderPath = path.join(__dirname, "frontend", "build");
 
   if (!fs.existsSync(buildFolderPath)) {
-    // If build folder doesn't exist, install and build the frontend
     console.log("No build folder found. Installing and building frontend...");
     exec(
       "cd frontend && npm install && npm run build",
@@ -49,6 +47,15 @@ if (process.env.NODE_ENV === "production") {
   buildFrontendIfNeeded();
 }
 
+// Serve static files from React in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
 // Use route modules
 app.use("/api", artistsRoutes);
 app.use("/api", releasesRoutes);
@@ -56,17 +63,6 @@ app.use("/api", podcastRoutes);
 app.use("/api", albumRoutes);
 app.use("/api", trendingSongsRouter);
 app.use("/api", discover);
-
-// Serve static files from the React app in production
-if (process.env.NODE_ENV === "production") {
-  // Set the static folder
-  app.use(express.static(path.join(__dirname, "frontend/build")));
-
-  // Handle React routing, return all requests to the React app
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
 
 // Start server
 app.listen(PORT, () => {
