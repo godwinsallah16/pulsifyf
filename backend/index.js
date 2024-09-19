@@ -34,7 +34,7 @@ const buildFrontendIfNeeded = () => {
   if (!fs.existsSync(buildFolderPath)) {
     console.log("No build folder found. Installing and building frontend...");
     exec(
-      "cd frontend && npm install && npm run build",
+      "cd ../frontend && npm install && npm run build",
       (err, stdout, stderr) => {
         if (err) {
           console.error(`Error during frontend build: ${err}`);
