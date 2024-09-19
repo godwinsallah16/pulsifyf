@@ -1,0 +1,15 @@
+const express = require("express");
+const router = express.Router();
+const { getTopTracks } = require("../services/topSongsService");
+
+// Define the route to get top 5 tracks
+router.get("/top-tracks", async (req, res) => {
+  try {
+    const topTracks = await getTopTracks();
+    res.json(topTracks);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+module.exports = router;

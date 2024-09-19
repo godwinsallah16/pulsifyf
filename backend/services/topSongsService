@@ -1,0 +1,28 @@
+const axios = require("axios");
+const { getAccessToken } = require("./spotifyService");
+
+// Function to get top 5 tracks from Spotify
+const getTopTracks = async () => {
+  try {
+    // Get access token
+    const accessToken = await getAccessToken();
+
+    // Define the endpoint for top tracks
+    const endpoint = "https://api.spotify.com/v1/top/tracks?limit=5";
+
+    // Make the request to Spotify API
+    const response = await axios.get(endpoint, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    // Return the top 5 tracks
+    return response.data.items;
+  } catch (error) {
+    console.error("Error fetching top tracks:", error);
+    throw new Error("Unable to fetch top tracks");
+  }
+};
+
+module.exports = { getTopTracks };
