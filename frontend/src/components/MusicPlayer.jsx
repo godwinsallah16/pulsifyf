@@ -3,7 +3,8 @@ import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute, FaRandom, FaStepForward, FaS
 import { LuRepeat1 } from 'react-icons/lu'; 
 import { MdOutlineQueueMusic } from 'react-icons/md'; 
 import { PiMicrophoneStageBold } from "react-icons/pi";
-import song from '../assets/music/Dull.mp3';
+import { useSelector } from 'react-redux';
+
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -15,6 +16,9 @@ const MusicPlayer = () => {
   const [repeatMode, setRepeatMode] = useState(0); 
   const [isLiked, setIsLiked] = useState(false); // New state for the like button
   const audioRef = useRef(null);
+
+  const currentPlayUrl = useSelector((state) => state.playback.currentPlayUrl);
+
 
   // Set volume on the audio element when volume changes
   useEffect(() => {
@@ -117,7 +121,7 @@ const MusicPlayer = () => {
 
   return (
     <div className="fixed bottom-0 md:left-[78px] lg:left-64 w-[calc(100%-78px)] lg:w-[calc(100%-16rem)] h-[50px] bg-gray-800 border-solid text-white flex justify-between items-center sm:hidden md:flex">
-      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} src={song} />
+      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} src={currentPlayUrl} />
 
       {/* Album Art and Song Details */}
       <div className="flex items-center w-1/3">

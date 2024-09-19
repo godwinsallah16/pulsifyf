@@ -2,8 +2,8 @@ import React from 'react'
 
 const Radio = () => {
   return (
-    <div>Radio</div>
+    <div>Radio;</div>
   )
 }
 
-export default Radio
+export default Radio;

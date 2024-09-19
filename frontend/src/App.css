@@ -22,14 +22,14 @@
 /* Add these styles to your global CSS file or in a CSS module */
 .scrollable-container {
   overflow-y: scroll;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   /* For Firefox */
   scrollbar-color: grey transparent;
   /* For Firefox */
 }
 
 .scrollable-container::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
   /* Width of the scrollbar */
 }
 
@@ -41,7 +41,7 @@
 .scrollable-container::-webkit-scrollbar-thumb {
   background: grey;
   /* Color of the scrollbar thumb */
-  border-radius: 2px;
+  border-radius: 1px;
   /* Rounded corners for the thumb */
 }
 

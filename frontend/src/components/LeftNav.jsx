@@ -158,7 +158,7 @@ const LeftNav = () => {
           </div>
           <div className="flex flex-col mt-2 ">
             {playlists.map(playlist => (
-              <div key={playlist.id} className="flex items-center py-2 hover:bg-gray-700 justify-between">
+              <div key={playlist.id} className="flex items-center py-2 justify-between">
                 <img src={playlist.imageUrl} alt={playlist.name} className="w-8 h-8 rounded" />
                 <span className="ml-2 hidden lg:inline">{playlist.name}</span>
                 <FaTrash
